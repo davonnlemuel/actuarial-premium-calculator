@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="desc-page">
+
+<a href="/description" class="back-btn">← Back</a>
+
+<div class="card" style="width:1100px; max-width:95%;">
+    <h2>Mortality Table Visualization</h2>
+
+    <div class="chart-wrap" style="height:420px; width:100%; overflow-x:auto;">
+        <canvas id="qxChart"></canvas>
+    </div>
+
+    <div class="tables-row">
+
+        <div class="table-box">
+            <h3>Male Mortality Table</h3>
+            <div class="table-scroll">
+                {{ table_male|safe }}
+            </div>
+        </div>
+
+        <div class="table-box">
+            <h3>Female Mortality Table</h3>
+            <div class="table-scroll">
+                {{ table_female|safe }}
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script id="ages-data" type="application/json">
+{{ ages | tojson }}
+</script>
+
+<script id="male-data" type="application/json">
+{{ qx_male | tojson }}
+</script>
+
+<script id="female-data" type="application/json">
+{{ qx_female | tojson }}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+const ages = JSON.parse(document.getElementById("ages-data").textContent);
+const qxMale = JSON.parse(document.getElementById("male-data").textContent);
+const qxFemale = JSON.parse(document.getElementById("female-data").textContent);
+
+new Chart(document.getElementById("qxChart"), {
+    type: "line",
+    data: {
+        labels: ages,
+        datasets: [
+            { label: "Male qx", data: qxMale, tension: 0.3, borderWidth: 2 },
+            { label: "Female qx", data: qxFemale, tension: 0.3, borderWidth: 2 }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: "index", intersect: false },
+        scales: { y: { beginAtZero: true } }
+    }
+});
+</script>
+
+</body>
+</html>

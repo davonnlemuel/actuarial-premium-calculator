@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Description</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="desc-page">
+
+<a href="/" class="back-btn">← Back to Main Menu</a>
+
+<div class="card" style="width:900px; max-width:95%; margin-top:60px;">
+
+<h2>Tentang Website Kalkulator Premi</h2>
+<p>
+Website ini merupakan kalkulator premi asuransi jiwa yang menghitung <strong>premi</strong> berdasarkan Tabel Mortalitas Indonesia IV (TMI IV). 
+Perhitungan dilakukan dengan asumsi bahwa manfaat asuransi dibayarkan secara diskret, yaitu pada akhir tahun terjadinya kematian. 
+Premi yang dihasilkan merupakan premi netto yang tidak mencakup biaya operasional, komisi, maupun keuntungan perusahaan.
+</p>
+
+<h2>Ruang Lingkup Perhitungan</h2>
+<ul>
+  <li>Mendukung skema <em>single life</em>, <em>joint life</em>, dan <em>last survivor</em>.</li>
+  <li>Perhitungan premi untuk produk <em>whole life</em>, <em>term insurance</em>, <em>endowment</em>, dan <em>pure endowment</em> (dwiguna).</li>
+  <li>Parameter input meliputi usia tertanggung, tingkat bunga (<em>interest rate</em>), masa pertanggungan, masa pembayaran premi, serta <em>sum assured</em> (besar santunan).</li>
+  <li>Hasil perhitungan ditampilkan secara langsung melalui antarmuka yang sederhana dan mudah digunakan.</li>
+</ul>
+
+<h2>Panduan Penggunaan</h2>
+<ol>
+  <li>Pilih jenis produk asuransi yang diinginkan.</li>
+  <li>Masukkan parameter seperti usia, tingkat bunga, dan manfaat pertanggungan.</li>
+  <li>Klik tombol <strong>Calculate</strong> untuk memperoleh estimasi premi.</li>
+  <li>Gunakan halaman ini untuk memahami metode serta data yang digunakan.</li>
+</ol>
+<p><strong>Catatan:</strong> Seluruh hasil pada website ini merupakan simulasi dan tidak menggantikan ilustrasi resmi dari perusahaan asuransi.</p>
+
+<h2>Metode Perhitungan</h2>
+<p>
+Premi dihitung menggunakan konsep nilai kini aktuaria dengan
+mengombinasikan probabilitas kelangsungan hidup, probabilitas kematian,
+serta faktor diskonto berbasis tingkat bunga untuk memperoleh besaran premi bersih.
+Rumus aktuaria yang digunakan dalam perhitungan ini mengacu pada referensi berikut.
+</p>
+
+<p><small>
+Referensi:<br>
+Dickson, D. C. M., Hardy, M. R., & Waters, H. R. (2020).
+<i>Actuarial Mathematics for Life Contingent Risks</i> (3rd ed.).
+Cambridge University Press.
+</small></p>
+
+<h2>Sumber Data Mortalitas</h2>
+<p>
+Perhitungan premi menggunakan <strong>Tabel Mortalitas Indonesia IV (2019)</strong> sebagai dasar estimasi probabilitas kematian dan kelangsungan hidup. 
+Tabel ini memuat data usia (<em>x</em>), probabilitas meninggal (<em>q<sub>x</sub></em>), serta probabilitas bertahan hidup (<em>p<sub>x</sub></em>).
+</p>
+
+<p>
+Himpunan data dapat diakses melalui tautan berikut:
+<br>
+<a href="https://www.kaggle.com/datasets/fahmirk/tabel-mortalitas-indonesia" target="_blank">
+Tabel Mortalitas Indonesia IV (Kaggle)
+</a>
+</p>
+
+<h2>Visualisasi Data Mortalitas</h2>
+<p>
+Klik tombol di bawah untuk melihat grafik mortalitas serta himpunan data yang digunakan.
+</p>
+
+<div style="margin-top:30px;">
+    <a href="/qx" class="data-btn">View Mortality Table & Visualization</a>
+</div>
+
+</div>
+
+<div class="footer">
+    © 2026 Davonn Lemuel Halomoan & Fidellya Sitorus
+</div>
+
+</body>
+</html>

@@ -1,0 +1,225 @@
+body {
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background: #eef2f7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.card {
+    background: #ffffff;
+    padding: 40px;
+    border-radius: 14px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+    width: 460px;
+    border: 1px solid #e5e7eb;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #1f2937;
+}
+
+label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #374151;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 6px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+    transition: all 0.2s ease;
+    background-color: #f9fafb;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: #1f2937;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 2px rgba(31, 41, 55, 0.08);
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    background-color: #1f2937;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    background-color: #111827;
+}
+
+#result {
+    margin-top: 25px;
+    background: #f3f4f6;
+    padding: 18px;
+    border-radius: 10px;
+    font-size: 15px;
+    line-height: 1.8;
+    color: #111827;
+    border-left: 4px solid #1f2937;
+}
+
+/* ===== BACK BUTTON ===== */
+
+.back-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #374151;
+    color: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+.back-btn:hover {
+    background-color: #111827;
+    transform: translateY(-2px);
+}
+
+/* ===== HORIZONTAL MENU ===== */
+
+.menu-links {
+    text-align: center;
+    margin-top: 25px;
+    font-weight: 500;
+}
+
+.menu-links a {
+    text-decoration: none;
+    color: #2563eb;
+    padding: 0 8px;
+    transition: 0.2s ease;
+}
+
+.menu-links a:hover {
+    color: #1e40af;
+}
+
+.divider {
+    color: #9ca3af;
+}
+
+.menu-container{
+    text-align:center;
+}
+
+.main-title{
+    font-size:32px;
+    font-weight:700;
+    margin-bottom:10px;
+    color:#111827;
+}
+
+.subtitle{
+    color:#6b7280;
+    margin-bottom:20px;
+}
+
+.footer{
+    position:fixed;
+    bottom:15px;
+    width:100%;
+    text-align:center;
+    font-size:13px;
+    color:#9ca3af;
+}
+
+.tables-row{
+    display:flex;
+    gap:30px;
+    margin-top:25px;
+    align-items:flex-start;
+}
+
+.table-box{
+    flex:1;
+    min-width:0;
+}
+
+.table-scroll{
+    max-height:420px;
+    overflow:auto;
+    border-radius:10px;
+}
+
+.chart-wrap{
+    width:100%;
+    overflow-x:auto;
+}
+
+.chart-wrap canvas{
+    min-width:1000px;
+}
+
+.tables-row{
+    display:flex;
+    gap:40px;
+    align-items:flex-start;
+    justify-content:center;
+    flex-wrap:wrap;
+}
+
+.table-box{
+    width:420px;
+}
+
+.table-scroll{
+    max-height:420px;
+    overflow-y:auto;
+    border:1px solid #ddd;
+}
+
+
+
+/* ===== DESCRIPTION PAGE FIX ===== */
+
+.desc-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;   /* penting */
+    min-height: 100vh;
+    padding-top: 40px;
+}
+
+.desc-page .chart-wrap{
+    margin-top:20px;
+    overflow:visible;
+}
+
+/*ini buat note kecil*/
+.note {
+  font-size: 0.85em;
+  color: #666;
+  margin-top: 2px;      /* lebih nempel ke atas */
+  margin-bottom: 12px;  /* kasih jarak ke bawah */
+}
+
+input:disabled {
+    background-color: #e5e7eb;
+    border: 1px solid #cbd5e1;
+    color: #555;
+    opacity: 1;
+}

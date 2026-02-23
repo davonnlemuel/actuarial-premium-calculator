@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Actuarial Premium Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            width: 420px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            background-color: #2563eb;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #1e40af;
+        }
+
+        #result {
+            margin-top: 20px;
+            background: #f1f5f9;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Premium Calculator</h2>
+
+    <label>Age Male</label>
+    <input id="age1" type="number" value="25">
+
+    <label>Age Female</label>
+    <input id="age2" type="number" value="20">
+
+    <label>Interest Rate</label>
+    <input id="interest" type="number" step="0.0001" value="0.0475">
+
+    <label>Life Type</label>
+    <select id="life_type">
+        <option value="joint">Joint Life</option>
+        <option value="last">Last Survivor</option>
+    </select>
+
+    <label>Product Type</label>
+    <select id="product_type">
+        <option value="term">Term Insurance</option>
+        <option value="whole">Whole Life</option>
+        <option value="pure">Pure Endowment</option>
+        <option value="endowment">Endowment</option>
+    </select>
+
+    <label>Benefit Term</label>
+    <input id="benefit_term" type="number" value="20">
+
+    <label>Premium Term</label>
+    <input id="premium_term" type="number" value="10">
+
+    <label>Sum Assured</label>
+    <input id="sum_assured" type="number" value="1000000000">
+
+    <button onclick="calculate()">Calculate</button>
+
+    <div id="result"></div>
+</div>
+
+<script>
+async function calculate() {
+
+    const data = {
+        age1: parseInt(document.getElementById("age1").value),
+        age2: parseInt(document.getElementById("age2").value),
+        interest: parseFloat(document.getElementById("interest").value),
+        life_type: document.getElementById("life_type").value,
+        product_type: document.getElementById("product_type").value,
+        benefit_term: parseInt(document.getElementById("benefit_term").value),
+        premium_term: parseInt(document.getElementById("premium_term").value),
+        sum_assured: parseFloat(document.getElementById("sum_assured").value)
+    };
+
+    const response = await fetch("/calculate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data)
+    });
+
+    if (!response.ok) {
+        document.getElementById("result").innerHTML = "Server error";
+        return;
+    }
+
+    const result = await response.json();
+
+    document.getElementById("result").innerHTML =
+        "<b>Net Premium:</b> " + result.net_premium.toFixed(2) + "<br>" +
+        "<b>Benefit EPV:</b> " + result.benefit_epv.toFixed(6) + "<br>" +
+        "<b>Annuity EPV:</b> " + result.annuity_epv.toFixed(6);
+}
+</script>
+
+</body>
+</html>
